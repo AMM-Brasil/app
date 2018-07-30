@@ -1,0 +1,8 @@
+{
+  "name": "AMMBrasil",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "b7212826"
+}
