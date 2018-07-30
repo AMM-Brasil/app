@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Push, PushObject, PushOptions } from "@ionic-native/push";
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -16,7 +17,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public push: Push, public alertCtrl: AlertController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -33,6 +34,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+	  this.pushsetup();
     });
   }
 
@@ -40,5 +42,29 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+  
+  pushsetup() {
+    const options: PushOptions = {
+		android: {
+			topics: ['nacional']
+		},
+		ios: {
+			topics: ['nacional']
+		}
+	};
+
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on("registration").subscribe((registration: any) => {
+	});
+
+    pushObject.on("notification").subscribe((notification: any) => {
+		let youralert = this.alertCtrl.create({
+			title: notification.title,
+			message: notification.message
+        });
+        youralert.present();
+    });
   }
 }
