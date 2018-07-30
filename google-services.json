@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1046685808652",
+    "firebase_url": "https://amm-brasil.firebaseio.com",
+    "project_id": "amm-brasil",
+    "storage_bucket": "amm-brasil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046685808652:android:ce93a13ced6d5555",
+        "android_client_info": {
+          "package_name": "com.ammbrasil.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1046685808652-opnfnulqq776eg1i02lj8giqufmsafn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFUP16fDw1yxUEACtXHFl_4ORs1K1kQYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
