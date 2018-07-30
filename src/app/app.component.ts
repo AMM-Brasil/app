@@ -36,8 +36,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-	  new AMMPush(this.push, this.alertCtrl, this.storage);
-	  //this.pushsetup();
+	  let ammPush = new AMMPush(this.push, this.alertCtrl, this.storage);
+	  ammPush.setup();
     });
   }
 
@@ -47,27 +47,4 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
   
-  public pushsetup() {
-    const options: PushOptions = {
-		android: {
-			topics: ['nacional']
-		},
-		ios: {
-			topics: ['nacional']
-		}
-	};
-
-    const pushObject: PushObject = this.push.init(options);
-
-    pushObject.on("registration").subscribe((registration: any) => {
-	});
-
-    pushObject.on("notification").subscribe((notification: any) => {
-		let youralert = this.alertCtrl.create({
-			title: notification.title,
-			message: notification.message
-        });
-        youralert.present();
-    });
-  }
 }

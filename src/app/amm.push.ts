@@ -6,11 +6,9 @@ export class AMMPush {
 	
   pushObject: PushObject;
 
-  constructor(public push: Push, public alertCtrl: AlertController, public storage: Storage) {
-	this.pushsetup();
-  };
+  constructor(public push: Push, public alertCtrl: AlertController, public storage: Storage) { };
   
-  public pushsetup() {
+  public setup() {
 	  
 	const options: PushOptions = {
 		android: {
@@ -31,7 +29,6 @@ export class AMMPush {
 					this.storage.get(topic).then((val) => {
 						if (val) {
 							this.pushObject.subscribe(topic);
-							console.log("subscribed to " + topic); 
 						}
 					});
 				}
