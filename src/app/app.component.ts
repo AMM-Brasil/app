@@ -3,6 +3,8 @@ import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from "@ionic-native/push";
+import { Storage } from '@ionic/storage';
+import { AMMPush } from "./amm.push";
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -17,7 +19,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public push: Push, public alertCtrl: AlertController) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public push: Push, public alertCtrl: AlertController, public storage: Storage) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -34,7 +36,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-	  this.pushsetup();
+	  new AMMPush(this.push, this.alertCtrl, this.storage);
+	  //this.pushsetup();
     });
   }
 
@@ -44,7 +47,7 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
   
-  pushsetup() {
+  public pushsetup() {
     const options: PushOptions = {
 		android: {
 			topics: ['nacional']
